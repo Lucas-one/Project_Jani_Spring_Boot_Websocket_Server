@@ -31,22 +31,18 @@ public class WebSocketController {
 	private static Logger logger = LoggerFactory.getLogger(WebSocketController.class);
 	private ObjectMapper mapper = new ObjectMapper();
 	
-	@Autowired
-	private SimpMessagingTemplate template;
 	
-	@MessageMapping("/queue/{receiverName}")// ws://IP:PORT/app/end
-	public void sendQueueMessage(@DestinationVariable("receiverName") String receiverName, @RequestBody MessageModel messageModel) {
-		logger.info("To : " + receiverName + " : " + messageModel.getContents());
-		
-		template.convertAndSend("/queue/"+ receiverName, messageModel);
+	@Autowired private SimpMessagingTemplate template;
+	
+	@MessageMapping("/queue/{receiverName}")// ws://IP:PORT/app/end public void
+	public void sendQueueMessage(@DestinationVariable("receiverName") String receiverName, @RequestBody MessageModel messageModel) { 
+		logger.info("To : " + receiverName + " : " + messageModel.getMsgContent());
+		template.convertAndSend("/queue/"+ receiverName, messageModel); 
 	}
-	
-	@MessageMapping("/req/{receiverName}")
-	public void sendRequestMessage(@DestinationVariable("receiverName") String receiverName , @RequestBody RequestModel requestModel) {
-		logger.info("request " + requestModel.getSenderName() + " to " + receiverName);
-	
-		template.convertAndSend("/req/" + receiverName, requestModel);
+
+	@MessageMapping("/req/{receiverName}") 
+	public void sendRequestMessage(@DestinationVariable("receiverName") String receiverName, @RequestBody RequestModel requestModel) { 
+		logger.info("request " + requestModel.getReqSenderName() + " to " + receiverName);
+		template.convertAndSend("/req/" + receiverName, requestModel); 
 	}
-	
-	
 }
