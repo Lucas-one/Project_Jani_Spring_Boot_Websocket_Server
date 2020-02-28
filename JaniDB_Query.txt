@@ -1,0 +1,107 @@
+create database projectjani;
+show databases;
+use projectjani;
+
+show tables;
+create table RegisterModel(
+	id	int not null Auto_Increment,
+    userName varchar(10) not null unique,
+    password varchar(10) not null,
+    
+   constraint PK_RegisterModel_Id primary key (id)
+);
+    
+create table UserInfo(
+	id int not null auto_increment,
+    userName varchar(10) not null,
+    owner varchar(10) not null unique,
+    
+    constraint PK_UserInfo_Id primary key(id),
+    constraint FK_RegisterModel_UserInfo_UserName Foreign key (Owner)
+    References RegisterModel(UserName) ON update cascade ON delete cascade
+    );
+    
+create table chatRoomModel(
+	id int not null auto_increment,
+    count int,
+    chatChannel varchar(10) unique not null,
+    chatRoomName varchar(10) not null,
+    owner varchar(10) not null,
+    
+    constraint PK_chatRoomModel_Id primary key(id),
+    constraint FK_RegisterModel_chatRoomModel_UserName Foreign key (owner)
+    References RegisterModel(UserName) ON update cascade ON delete cascade
+    );
+    
+create table requestModel(
+id int not null auto_increment,
+type int not null,
+chatChannel varchar(10) unique not null,
+senderName varchar(10) not null,
+receiverName varchar(10) not null,
+
+Constraint PK_requestModel_Id primary key (id),
+
+Constraint FK_chatRoomModel_requestModel_chatChannel foreign key (chatChannel)
+References chatRoomModel(chatChannel)ON update cascade ON delete cascade,
+
+Constraint FK_RegisterModel_requestModel_UserName1 foreign key (receiverName)
+References RegisterModel(UserName) ON update cascade ON delete cascade,
+
+Constraint FK_RegisterModel_requestModel_UserName2 foreign key(senderName)
+References RegisterModel(UserName) ON update cascade ON delete cascade
+);
+
+create table participantModel(
+id int not null auto_increment,
+userName varchar(10) not null unique,
+chatChannel varchar(10) not null unique,
+owner varchar(10) not null,
+
+constraint PK_participant_id primary key (id),
+
+constraint FK_RegisterModel_participantModel_UserName1 foreign key (userName)
+references RegisterModel(UserName) ON update cascade ON delete cascade,
+
+constraint FK_RegisterModel_participantModel_chatChannel foreign key (chatChannel)
+references chatRoomModel(chatChannel) ON update cascade ON delete cascade,
+
+constraint FK_RegisterModel_participantModel_UserName2 foreign key (owner)
+references RegisterModel(UserName) ON update cascade ON delete cascade
+
+);
+
+create table ackModel(
+type int not null,
+msgId int not null,
+chatChannel varchar(10) unique not null,
+senderName varchar(10) unique not null,
+receiverName varchar(10) unique not null,
+
+constraint PK_msgID primary key (msgId),
+
+constraint FK_chatRoomModel_ackModel_chatChannel foreign key (chatChannel)
+references chatRoomModel(chatChannel) ON update cascade ON delete cascade,
+
+constraint FK_RegisterModel_ackModel_UserName1 foreign key (receiverName)
+references RegisterModel(UserName) ON update cascade ON delete cascade,
+
+constraint FK_RegisterModel_ackModel_UserName2 foreign key (senderName)
+references RegisterModel(UserName) ON update cascade ON delete cascade
+
+);
+
+create table MessageModel(
+id int not null auto_increment,
+isRead int not null,
+count int not null,
+chatChannel varchar(10),
+senderName varchar(10),
+
+constraint PK_MessageId primary key (id),
+constraint FK_chatRoomModel_MessageModel_chatChannel foreign key (chatChannel)
+references chatRoomModel (chatChannel) ON update cascade ON delete cascade,
+
+constraint FK_RegisterModel_MessageModel_UserName foreign key (senderName)
+references RegisterModel(UserName) ON update cascade ON delete cascade
+);
