@@ -4,7 +4,7 @@
 `Jani Project Client GitHub`
 https://github.com/NaJunYeop/Project_Jani_Spring_Boot_Websocket_Server
 
-## Use.
+## Use
 
 
 - SpringBoot
