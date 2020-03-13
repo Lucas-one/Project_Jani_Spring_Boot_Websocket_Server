@@ -176,9 +176,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 </br>
 
-Jani_Server_register_model_entity
+<Jani_Server_register_model_entity>
 
 ServRegisterModel.java
+
 ~~~java
 @Entity
 @Table(name="register_model_entity")
@@ -202,7 +203,10 @@ public class ServRegisterModel {
 
 </br>
 
+MySQLController.java
+
 ~~~java
+
 @RequestMapping(value="/get-topic-channel", method=RequestMethod.POST)
 	@ResponseBody
 	public PlainTextModel getTopicNumber() {
