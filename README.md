@@ -111,7 +111,9 @@ AOP의 주 목적은 “**다수의 모듈에 공통적으로 나타나는 부�
 기본적으로 WebSocket API는 아주 간단한 기능들만을 제공하기 때문에 대부분의 경우 SockJS나 Socket.IO 같은 오픈 소스 라이브러리를 많이 사용하고 있으며 메세지 포멧 또한 `STOMP` 같은 프로토콜을 같이 이용합니다. 마지막으로 스프링 프레임워크도 WebSocket을 간단한 메세지 브로커랑 SockJS 그리고 STOMP와 같이 지원하고 있습니다.
 </br></br>
 
+<Jani_Server_WebSocketConfiguration>
 
+WebSocketConfig.java
 ~~~java
 package com.example.demo.configuration;
 
@@ -123,7 +125,8 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-<Jani_Server_WebSocketConfiguration>
+
+
 @Configuration
 @EnableWebSocket
 @EnableWebSocketMessageBroker
@@ -173,7 +176,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 </br>
 
-<Jani_Server_register_model_entity>
+Jani_Server_register_model_entity
+
+ServRegisterModel.java
 ~~~java
 @Entity
 @Table(name="register_model_entity")
@@ -315,7 +320,9 @@ DB구축에 앞서 `RDB`와 `NoSQL`을 고민했고 `Jani 프로젝트`에서 DB
 **Server**와 **Client**를 통신하는데 있어서 **아이디 중복 체크**, **아이디 등록**, **user 정보 불러오기**, **user 찾기**, **채팅 채널 요청** 기능을 구현하는데 사용했습니다. **유저들간**의 **실시간 통신**보다 **서버에 request를 보내고 response를 얻기** 때문에 `HttpRequest`를 활용했습니다. 이 때 요청 내용과 응답 내용 등을 노출하지 않기 위해 `POST`를 통해 데이터를 요청하였습니다. 
 </br>
 
-<Jani_client(android)_SourceCode>
+<Jani_Client(android)_SourceCode>
+
+RetrofitCommunicationService.java
 ~~~java
 public interface RetrofitCommunicationService {
     @POST("/duplication-check")
@@ -336,6 +343,8 @@ public interface RetrofitCommunicationService {
 ~~~
 
 <Jani_Server(SpringBoot_Tomcat)_SourceCode>
+
+getUserInformationModel.java
 ~~~java
 @RequestMapping(value="/get-user-info", method=RequestMethod.POST)
 	@ResponseBody
