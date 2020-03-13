@@ -69,25 +69,6 @@ AOP의 주 목적은 “**다수의 모듈에 공통적으로 나타나는 부�
 ### SPRING FRAMEWORK 내부 동작 원리
 ---
 
-![Spring_feature](.C:\Users\YJ\Desktop\rm_image/Spring_feature.png)
-
-
-
-
-
-
-
-</br></br></br></br></br></br></br></br>
-~~~
-`인라인`
-~~~
-
-
-~~~java
-public static void main(String args[]){
-    
-} 
-~~~
-
+![Spring_feature](./rm_image/Spring_feature.png)
 
 
