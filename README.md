@@ -397,3 +397,18 @@ HTTP/1.1 스펙인 RFC2616의 Section9.3에 따르면 `GET`은 **서버로부터
 
 
 
+> ## Reference
+
+https://tutledeveoper.wordpress.com/2018/07/22/spring-boot-%EA%B8%B0%EB%B3%B8-%EA%B5%AC%EC%A1%B0-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0/
+
+https://skibis.tistory.com/310
+
+https://gmlwjd9405.github.io/2019/08/04/what-is-jpa.html
+
+https://joshua1988.github.io/web-development/http-part1/
+
+https://wodonggun.github.io/wodonggun.github.io/study/%EC%95%84%ED%8C%8C%EC%B9%98-%ED%86%B0%EC%BA%A3-%EC%B0%A8%EC%9D%B4.html
+
+
+
+
