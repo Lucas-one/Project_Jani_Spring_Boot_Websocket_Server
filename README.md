@@ -5,7 +5,7 @@
 https://github.com/Lucas-one/Project_Jani_Android_Client.git
 
 ## Members
-NaJunYeop - TeamLeader
+NaJunYeop - TeamLeader </br>
 Lucas-one
 
 ## Use
