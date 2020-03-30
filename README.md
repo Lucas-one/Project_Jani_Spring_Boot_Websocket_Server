@@ -4,6 +4,10 @@
 `Jani Project Client GitHub`
 https://github.com/Lucas-one/Project_Jani_Android_Client.git
 
+## Members
+NaJunYeop - TeamLeader
+Lucas-one
+
 ## Use
 
 
